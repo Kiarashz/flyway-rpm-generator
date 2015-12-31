@@ -4,7 +4,7 @@
     <groupId>info.zamanifar</groupId>
     <artifactId>rpm_flyway</artifactId>
     <packaging>rpm</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>3.2.1</version>
     <name>rpm_flyway</name>
     <url>http://maven.apache.org</url>
     <dependencies>
@@ -13,26 +13,20 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>1.4.0</version>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>unpack-flyway</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>exec</goal>
-                        </goals>
+                        <goals><goal>unpack</goal></goals>
                         <configuration>
-                            <executable>tar</executable>
-                            <!-- optional -->
-                            <workingDirectory>${project.basedir}</workingDirectory>
-                            <arguments>
-                                <argument>xvf</argument>
-                                <argument>${project.basedir}/src/main/resources/flyway-commandline-3.2.1.tar.gz</argument>
-                                <argument>-C</argument>
-                                <argument>${project.build.directory}</argument>
-                            </arguments>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.flywaydb</groupId>
+                                    <artifactId>flyway-commandline</artifactId>
+                                    <version>3.2</version>
+                                    <type>tar.gz</type>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/binary</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -51,19 +45,20 @@
                     </execution>
                 </executions>
                 <configuration>
-
-                    <prefix>/opt/flyway</prefix>
                     <group>Application/Database</group>
                     <sourceEncoding>utf-8</sourceEncoding>
+                    <requires>
+                        <require>java &gt;= 5</require>
+                    </requires>
                     <mappings>
                         <mapping>
-                            <directory>/opt/flyway</directory>
+                            <directory>/opt</directory>
                             <filemode>440</filemode>
                             <username>root</username>
                             <groupname>root</groupname>
                             <sources>
                                 <source>
-                                    <location>target</location>
+                                    <location>${project.build.directory}/binary</location>
                                 </source>
                             </sources>
                         </mapping>
