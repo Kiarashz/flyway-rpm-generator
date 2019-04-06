@@ -2,12 +2,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <flywayVersion>6.0.0-beta</flywayVersion>
     </properties>
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.flywaydb</groupId>
     <artifactId>flyway-commandline</artifactId>
     <packaging>rpm</packaging>
-    <version>5.2.4</version>
+    <version>${flywayVersion}</version>
     <name>flyway-commandline</name>
     <description>Version control for your database. Robust schema evolution across all your environments. With ease, pleasure and plain SQL.</description>
     <url>https://flywaydb.org</url>
@@ -27,7 +28,7 @@
                                 <artifactItem>
                                     <groupId>org.flywaydb</groupId>
                                     <artifactId>flyway-commandline</artifactId>
-                                    <version>5.2.4</version>
+                                    <version>${flywayVersion}</version>
                                     <type>tar.gz</type>
                                 </artifactItem>
                             </artifactItems>
@@ -68,7 +69,7 @@
                                 </source>
                                 <softlinkSource>
                                     <destination>flyway</destination>
-                                    <location>flyway-5.2.4</location>
+                                    <location>${flywayVersion}</location>
                                 </softlinkSource>
                             </sources>
                         </mapping>
