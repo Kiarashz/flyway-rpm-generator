@@ -1,12 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>info.zamanifar</groupId>
-  <artifactId>rpm_flyway</artifactId>
+  <groupId>org.flywaydb</groupId>
+  <artifactId>flyway-commandline</artifactId>
   <packaging>rpm</packaging>
   <version>5.2.4</version>
-  <name>rpm_flyway</name>
-  <url>http://maven.apache.org</url>
+  <name>flyway-commandline</name>
+  <description>Version control for your database. Robust schema evolution across all your environments. With ease, pleasure and plain SQL.</description>
+  <url>https://flywaydb.org</url>
   <dependencies>
   </dependencies>
   <build>
@@ -46,6 +50,7 @@
           </execution>
         </executions>
         <configuration>
+          <license>Apache License, Version 2.0</license>
           <group>Application/Database</group>
           <sourceEncoding>utf-8</sourceEncoding>
           <requires>
@@ -61,6 +66,10 @@
                 <source>
                   <location>${project.build.directory}/binary</location>
                 </source>
+                <softlinkSource>
+                  <destination>flyway</destination>
+                  <location>flyway-5.2.4</location>
+                </softlinkSource>
               </sources>
             </mapping>
           </mappings>
