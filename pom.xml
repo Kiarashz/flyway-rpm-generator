@@ -69,7 +69,7 @@
                                 </source>
                                 <softlinkSource>
                                     <destination>flyway</destination>
-                                    <location>${flywayVersion}</location>
+                                    <location>flyway-${flywayVersion}</location>
                                 </softlinkSource>
                             </sources>
                         </mapping>
