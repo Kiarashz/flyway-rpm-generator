@@ -54,9 +54,12 @@
                     <license>Apache License, Version 2.0</license>
                     <group>Application/Database</group>
                     <sourceEncoding>utf-8</sourceEncoding>
+                    <!-- let users decide how to install java -->
+                    <!--
                     <requires>
                         <require>java &gt;= 7</require>
                     </requires>
+                  -->
                     <mappings>
                         <mapping>
                             <directory>/opt</directory>
